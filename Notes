@@ -22,3 +22,9 @@
    -->django框架时间设置
       django APP添加
       templates目录设置
+
+7. 项目目录结构：
+   -->manage.py管理程序的文件，启动和结束等
+      setting.py程序的配置文件
+      url.py程序的路由系统，即url和处理函数对应的关系
+      wsgi.py指定框架的wsgi
