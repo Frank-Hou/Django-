@@ -1,0 +1,24 @@
+1. MVC框架：model模型、view视图、controller控制器
+   而Django的MVC：model、template、view
+
+2. django框架的mvc流程：用户User发出访问请求-->服务器（Uwsgi、nginx）-->Django（Router路由解析-- 
+   -->View[controller]-->Model-->Template渲染）-->发生至浏览器展示内容
+
+3. Django框架创建流程：创建django工程，即Project-->在工程下创建APP，俗称应用程序-->完成
+
+4. 关于POST和GET请求：
+   -->区别：a.GET把参数包含在URL里面，而POST通过request body传递参数
+            b.简单理解即前者是明文传递数据，后者为加密传递
+            c.后者比前者安全，通常传输用户名密码
+            
+5. 几个入门命令：
+   -->a.创建项目：django-admin startproject projectname
+      b.创建APP（进入工程目录）：python manage.py appname
+      c.创建库表（进入工程目录）：python manage.py makemigrations
+      d.执行库表建立（进入工程目录）：python manage.py migrate
+      模板渲染嵌入语法：在HTML可以嵌入后台语言 区分符号--->     {%命令%}  {{变量}}
+      
+6. 几个入门设置：
+   -->django框架时间设置
+      django APP添加
+      templates目录设置
