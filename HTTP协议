@@ -1,0 +1,10 @@
+1. HTTP协议是用于从WWW服务器传输超文本到本地浏览器的传输协议，特性：
+   -->a.基于TCP/IP协议，浏览器socket client《==》网站服务器socket server
+      b.短链接 
+      c.被动响应
+      d.无状态，即服务器端不记得是哪个客户端在请求
+
+2. 基于socket的上层封装-------WSGI
+   -->是一种规范，定义了使用python编写的web app与web（socket服务器）之间接口格式，实现了web app
+      与web server之间的解耦，当规范建立后程序就不用重复编写web server
+   
