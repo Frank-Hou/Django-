@@ -65,5 +65,21 @@
           -->练习时出现：TypeError: 'module' object is not iterable错误
           -->原因是在写本地路由地址hello2app.urls时模块错误书写urlpatterns写成urlpaaterns
       
-      
-      
+11. 云端留言板开发流程：
+    -->基本功能定义：
+       ·提交留言功能：
+            用户设定自己的名字为A，指定任意名字B
+            向B留言，记为msg,留言保存在云端
+       ·获取留言功能：
+            输入名字A，云端返回10条最新留言记录
+    -->a.新建工程cloudms
+       b.新建应用msgapp
+       c.增加模板，即显示界面的HTML/CSS/JS代码，配置路径
+       d.设置URL路由，本地以及全局路由
+       e.编写交互代码
+       f.运行工程
+        
+       
+       
+       
+       
