@@ -78,8 +78,15 @@
        d.设置URL路由，本地以及全局路由
        e.编写交互代码
        f.运行工程
-        
-       
-       
+    -->记录一下在实验中出现的问题：
+      （1）发生TemplateDoesNotExist：
+          原因：在工程的setting文件配置路径时发生错误
+      （2）在提交留言功能处发生RuntimeError at /msggate
+          原因：在HTML文件编写时action获取POST请求时，路由名称没有和action（msggate/缺少/）中一致
+          参考： https://blog.csdn.net/likunkun__/article/details/87380892
+      （3）存在问题：获取留言功能区无法获取留言信息
+
+12. Django的URL路由配置：
+    -->setting.py文件中ROOT_URLCONF变量指定全局路由文件名称
        
        
