@@ -86,7 +86,76 @@
           参考： https://blog.csdn.net/likunkun__/article/details/87380892
       （3）存在问题：获取留言功能区无法获取留言信息
 
-12. Django的URL路由配置：
-    -->setting.py文件中ROOT_URLCONF变量指定全局路由文件名称
-       
+12. django框架进阶：
+    -->（1）django的URL路由机制
+       （2）django的视图响应类型
+       （3）django的视图流式响应机制
+       （4）django的模板引擎和模板使用
+       （5）django模板语言入门
+    -->django的路由机制：
+       URL----定义、转换、传参、命名等----views
+       a.路由是关联URL及其处理函数关系的过程
+         setting.py文件中ROOT_URLCONF变量指定全局路由文件名称
+             ROOT_URLCONF = '<工程名称>.urls' # 默认对应工程目录下urls.py文件
+         django使用urlpatterns变量表示路由（url.py），该变量是列表类型，由path()或re_path()作为元素使用
+       b.django的URL路由流程：
+         [1] django查找全局urlpatterns变量（url.py）
+         [2] django按照先后顺序，对URL逐一匹配urlpatterns每个元素
+         [3] 找到第一个匹配时，停止查找，根据匹配结果执行相应的处理函数
+         [4] 如果没有找到匹配或者出现异常，django进行错误处理
+       c.注意：
+         django的路由不考虑HTTP请求方式，仅根据URL进行路由
+         只要URL相同，无论POST、GET等请求方式都指向同一个操作函数
+       d.路由path()和re_path的异同：
+         [1] path(route,views)处理字符串路由，re_path(route,views)后者处理正则表达式路由
+         [2] 路由函数path(route, view, kwargs=None, name=None):
+             route:url或URL模式，django定义的URL转换语法
+             view：处理（视图）函数名称，或include()类
+             kwargs: 向处理函数提供的额外参数，以字典形式表示
+             name: 给URL模式的命名
+       e.django支持的三种route表达方式：
+         [1] 精确字符串格式：articles/2003/
+         [2] django的转换格式: <类型:变量名> ，articles/<int:year>/
+         [2] 正则表达格式：articles/(?P<year>[0~9]{4})
+    -->view的使用：
+       a.两种类型：处理函数和include()函数
+         处理函数：views.py中处理URL的对应函数，URL处理的归宿
+         include:包含其他路由信息的函数，分段路径组合形成总路径
+       b.include的用法：附加本地路由/路径去重
+    -->django的视图响应类型：
+       a.视图函数（接受HTTP请求并返回响应）编写原则：
+         [1] 可以返回web文本、页面、重定向、错误、图片等任何内容
+         [2] 视图函数通过HttpRssponse、JsonResponse等类表达并返回响应
+         [3] 按约定，视图函数放在对应app中的views.py文件中
+    -->django的响应类型：django.http包含所有响应类型
+       HttpResponse类、JsonResponse类、StreamingHttpResponse类、FileRespon
+       a.HttpResponse(content,content_type=None,status=200,charset=None)
+         [1] content拟返回的字符串
+         [2] content_type：MIME格式的返回内容类型
+         [3] status响应状态码
+         [4] charset响应的字符集
+       b.JsonResponse(data)：
+         [1]  data : 字典类型，返回的JSON类型数据
+       c.StreamingHttpResponse(streaming_content):
+         [1] streaming_content : 内容的迭代器形式，以内容流的方式响应
+    -->django请求类型的判断：
+       django.views.decorators.http
+    -->django的视图流式响应机制：
+       a.django的响应类型：
+         [1] 一次性响应： HttpResponse类、JsonResponse类
+         [1] 流式响应：StreamingHttpResponse类、FileResponse类，适合大文本文、大二进制文件传输
+       b.yield关键字：包含yield语句的函数是一个生成器（迭代器的一种）
+         生成器每次产生一个值（yield语句），函数被冻结，被唤醒后再产生一个值，生成器是一个不断产生值的函数
+    -->django的模板引擎和模板使用：
+       a.模板引擎是模板响应的后端:django, Jinja2
+       b.settings.py文件中对模板引擎进行配置 （BACKEND）
+       c.模板的查找：get_template(template_name) -> Template类
+         在模板目录列表中，依次查找某个模板，直到找到并返回Template类,如果未找到模板，则抛出TemplateDoesNotExist异常
+       d.模板的渲染：Template.render(context, request) -> HTML字符串
+         render()方法用于将模板结合内容渲染成HTML字符串
+         context : 字典类型，用于加载到模板中的内容
+         request : HTTP请求
+       e.模板使用步骤：
+         [1] 指定template：定义一哥template类
+         [2] 进行渲染：通过context类或字典类
        
