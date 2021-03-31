@@ -159,3 +159,6 @@
          [1] 指定template：定义一哥template类
          [2] 进行渲染：通过context类或字典类
        
+12. reder()方法
+    -->用来打开html文件，对文件进行模板渲染，第一个参数是request，第二个参数是html文件路径（可以只写文件名称，django自动查找template文件夹），
+       渲染完成后，返回页面数据，最终交给wsgi中的socket发生到客户端
