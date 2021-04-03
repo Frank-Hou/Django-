@@ -162,3 +162,28 @@
 12. reder()方法
     -->用来打开html文件，对文件进行模板渲染，第一个参数是request，第二个参数是html文件路径（可以只写文件名称，django自动查找template文件夹），
        渲染完成后，返回页面数据，最终交给wsgi中的socket发生到客户端
+
+13. request类常用属性及方法：
+    -->request.META, 请求头信息, 返回一个标准的python字典，包含所有的HTTP首部
+       request.POST
+       request.GET
+       request.method
+       request.user, 匿名用户
+       request.get_full_path, 获取完整路径（包含查询参数的） 
+       request.FILES, 上传的文件数据，返回文件名称
+       request.FILES.get,类似于文件句柄
+       
+14. Response相关属性和方法：
+    -->return HttpResponse()
+       return render()
+       return redirect(/home/), 重定向, 封装了302状态码
+    -->添加相应头键值对：
+       ret = render(request, '/home/', status = 202) #render修改状态码
+       ret['a'] = b
+       return ret   #回复html页面
+       
+15. CBV和FBV：
+    -->两种视图逻辑的写法
+       FBV: function based view, 基于函数来写视图逻辑
+       CBV：class based view, 基于类来写视图
+       
