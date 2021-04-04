@@ -186,4 +186,23 @@
     -->两种视图逻辑的写法
        FBV: function based view, 基于函数来写视图逻辑
        CBV：class based view, 基于类来写视图
-       
+    -->CBV写视图函数：
+       class loginView(View):
+            # get请求，获取login界面
+           def get(self, request):
+               return render(request, 'login.html')
+            # post请求，获取请求的数据并进行校验
+           def post(self, request):
+               print(request.POST)
+               return render(request, 'login.html')
+       对应url路由书写发生变化：
+           url('/login/', views.loginView.as_view())
+    -->FBV加装饰器：
+       它们封装一个函数，并且用这样或者那样的方式来修改它的行为。
+       def outer(f):
+          def inner(request):
+             print('xx')
+             ret = f(request)
+             print('yy')
+             return ret
+          return inner
