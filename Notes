@@ -221,4 +221,4 @@
 
 17. ORM关系对象映射：
 
-18. 使用指令创建应用时。注意在setting.py中进行相应的配置：INSTALLED_APPS = []导入相应app
+18. 使用指令创建应用时。注意在setting.py中进行相应的配置：INSTALLED_APPS = []导入相应app1
