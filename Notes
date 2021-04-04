@@ -14,8 +14,8 @@
 5. 几个入门命令：
    -->a.创建项目：django-admin startproject projectname
       b.创建APP（进入工程目录）：python manage.py appname
-      c.创建库表（进入工程目录）：python manage.py makemigrations
-      d.执行库表建立（进入工程目录）：python manage.py migrate
+      c.创建库表（进入工程目录）生成迁移文件：python manage.py makemigrations， migrations里存储创建表时的记录日志
+      d.执行库表建立（进入工程目录）将对应的记录文件翻译为sql：python manage.py migrate
       模板渲染嵌入语法：在HTML可以嵌入后台语言 区分符号--->     {%命令%}  {{变量}}
       
 6. 几个入门设置：
@@ -206,3 +206,19 @@
              print('yy')
              return ret
           return inner
+
+16. 静态文件相关：
+    js、css、img等都叫做静态文件，那么关于django中静态文件的配置，在setting.py中
+    -->在项目根目录下创建一个存储静态文件的文件夹，文件名随意
+    -->在setting.py中写下：
+       
+    -->使用静态文件配置路径
+       三种写法：
+           1. <link rel="stylesheet" href="/abc/css/xx.css/"> #直接使用静态文件夹路径别名
+           2. 在html文件中{% load static %}
+              使用：<link rel="stylesheet" href="{static 'css/xx.css'}">
+           3. 在html文件{% load static %}
+
+17. ORM关系对象映射：
+
+18. 使用指令创建应用时。注意在setting.py中进行相应的配置：INSTALLED_APPS = []导入相应app
